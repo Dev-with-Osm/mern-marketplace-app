@@ -24,6 +24,10 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  avatar: {
+    type: String,
+    default: "https://cdn-icons-png.flaticon.com/512/1250/1250689.png",
+  },
 });
 
 //Export the model
