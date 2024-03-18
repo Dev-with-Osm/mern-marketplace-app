@@ -53,4 +53,13 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { createNewUser, loginUser };
+//logout user
+const logOutUser = asyncHandler(async (req, res) => {
+  try {
+    res.clearCookie("access_token").json("User LoggedOut");
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+module.exports = { createNewUser, loginUser, logOutUser };
