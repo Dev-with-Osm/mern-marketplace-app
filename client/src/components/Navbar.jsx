@@ -32,7 +32,7 @@ export default function Navbar() {
           {navItems.map((item) => (
             <li
               key={item.id}
-              className="p-4 text-lg rounded-xl m-2 cursor-pointer duration-300 hover:text-black"
+              className="p-4 text-lg rounded-xl my-2 cursor-pointer duration-300 hover:text-black"
             >
               {item.text}
             </li>
@@ -40,7 +40,7 @@ export default function Navbar() {
         </ul>
 
         {/* Mobile Navigation Icon */}
-        <div className="flex items-center gap-4  border-gray-400 rounded-full p-1 text-gray-700">
+        <div className="flex items-center md:ml-10 gap-4  border-gray-400 rounded-full p-1 text-gray-700">
           <button>
             <BsSearch size={20} />
           </button>
