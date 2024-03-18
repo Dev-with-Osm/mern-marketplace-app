@@ -21,4 +21,16 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { updateUser };
+//delete user
+const deleteUser = asyncHandler(async (req, res) => {
+  const { _id } = req.user;
+  verifyMongoDbId(_id);
+  try {
+    const deletedUser = await User.findByIdAndDelete(_id);
+    res.json(deletedUser);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+module.exports = { updateUser, deleteUser };
