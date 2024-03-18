@@ -1,8 +1,12 @@
 const express = require("express");
-const { createNewUser } = require("../controllers/authController.js");
+const {
+  createNewUser,
+  loginUser,
+} = require("../controllers/authController.js");
 
 const router = express.Router();
 
-router.post("/register", createNewUser); // Provide the callback function createNewUser
+router.post("/register", createNewUser);
+router.post("/login", loginUser);
 
 module.exports = router;
