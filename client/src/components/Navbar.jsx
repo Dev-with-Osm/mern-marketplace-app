@@ -42,10 +42,10 @@ export default function Navbar() {
         {/* Mobile Navigation Icon */}
         <div className="flex items-center gap-4  border-gray-400 rounded-full p-1 text-gray-700">
           <button>
-            <BsPerson size={28} />
+            <BsSearch size={20} />
           </button>
           <button>
-            <BsSearch size={20} />
+            <BsPerson size={28} />
           </button>
           <div onClick={handleNav} className="block md:hidden cursor-pointer">
             {nav ? <RiCloseFill size={28} /> : <RiMenu3Fill size={24} />}
