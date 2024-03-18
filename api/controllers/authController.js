@@ -3,6 +3,7 @@ const User = require("../models/userModel.js");
 // const validator = require("email-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const authMiddleware = require("../middlewares/authMiddleware.js");
 const salt = bcrypt.genSaltSync(10);
 
 // sign up user func
@@ -39,7 +40,7 @@ const loginUser = asyncHandler(async (req, res) => {
       expiresIn: "1d",
     });
     res
-      .cookie("token", token, {
+      .cookie("access_token", token, {
         maxAge: 86400000, // 1 day in milliseconds
         httpOnly: true,
       })
