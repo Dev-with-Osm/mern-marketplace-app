@@ -40,7 +40,7 @@ export default function Navbar() {
         </ul>
 
         {/* Mobile Navigation Icon */}
-        <div className="flex items-center gap-2 border-2 border-gray-400 rounded-full p-1 text-gray-700">
+        <div className="flex items-center gap-4  border-gray-400 rounded-full p-1 text-gray-700">
           <button>
             <BsPerson size={28} />
           </button>
