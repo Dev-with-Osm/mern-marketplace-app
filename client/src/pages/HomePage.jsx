@@ -48,22 +48,30 @@ export default function HomePage() {
           <img className="w-[100px] grayscale" src={kiaLogo} alt="" />
         </div>
         <div className="mx-12">
-          <img className="w-[100px] grayscale" src={porscheLogo} alt="" />
+          <img className="w-[80px] grayscale" src={porscheLogo} alt="" />
         </div>
         <div className="mx-12">
-          <img className="w-[100px] grayscale" src={bmwLogo} alt="" />
+          <img
+            className="w-[80px] md:w-[100px]  grayscale"
+            src={bmwLogo}
+            alt=""
+          />
         </div>
         <div className="mx-12">
           <img className="w-[100px] grayscale" src={daciaLogo} alt="" />
         </div>
         <div className="mx-12">
-          <img className="w-[100px] grayscale" src={nissanLogo} alt="" />
+          <img
+            className="w-[80px] md:w-[100px] grayscale"
+            src={nissanLogo}
+            alt=""
+          />
         </div>
         <div className="mx-12">
-          <img className="w-[100px] grayscale" src={hyundaiLogo} alt="" />
+          <img className="w-[120px] grayscale" src={hyundaiLogo} alt="" />
         </div>
         <div className="mx-12">
-          <img className="w-[100px] grayscale" src={toyotaLogo} alt="" />
+          <img className="w-[80px] grayscale" src={toyotaLogo} alt="" />
         </div>
         <div className="mx-12">
           <img className="w-[100px] grayscale" src={audiLogo} alt="" />
