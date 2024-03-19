@@ -2,12 +2,13 @@ import React from "react";
 import Marquee from "react-fast-marquee";
 import carHome from "../assets/porscherb.png";
 import porscheLogo from "../assets/Porsche-Logo.png";
-import bmwLogo from "../assets/Logo-bmw.png";
+import bmwLogo from "../assets/bmw-logo.png";
 import toyotaLogo from "../assets/toyota-logo.png";
 import daciaLogo from "../assets/Dacia-logo.png";
 import hyundaiLogo from "../assets/hyundai-logo.png";
 import nissanLogo from "../assets/Nissan_logo.png";
 import kiaLogo from "../assets/kia-logo.png";
+import audiLogo from "../assets/audi-logo.png";
 
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 
@@ -63,6 +64,9 @@ export default function HomePage() {
         </div>
         <div className="mx-12">
           <img className="w-[100px] grayscale" src={toyotaLogo} alt="" />
+        </div>
+        <div className="mx-12">
+          <img className="w-[100px] grayscale" src={audiLogo} alt="" />
         </div>
       </Marquee>
     </div>
