@@ -1,7 +1,9 @@
 import React from "react";
 import { MdOutlineEmail } from "react-icons/md";
-import { BsShieldLock } from "react-icons/bs";
+import { BsShieldLock, BsTelephone } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
+import { MdDriveFileRenameOutline } from "react-icons/md";
+
 import { Link } from "react-router-dom";
 export default function SignUpPage() {
   return (
@@ -21,7 +23,7 @@ export default function SignUpPage() {
           <label class="text-xs text-[#8B8E98] font-semibold">
             First Name:
           </label>
-          <MdOutlineEmail className="w-5 absolute z-20 left-3 bottom-2.5" />
+          <MdDriveFileRenameOutline className="w-5 absolute z-20 left-3 bottom-2.5" />
 
           <input
             placeholder="Your first name"
@@ -30,20 +32,10 @@ export default function SignUpPage() {
           />
         </div>
         <div className="w-full h-auto relative  flex flex-col gap-1.5">
-          <label class="text-xs text-[#8B8E98] font-semibold">Last Name:</label>
-          <MdOutlineEmail className="w-5 absolute z-20 left-3 bottom-2.5" />
-
-          <input
-            placeholder="Your last name"
-            type="text"
-            className="w-auto h-10 pl-10 rounded-md outline-none border border-solid border-[#d0cfcf] filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
-          />
-        </div>
-        <div className="w-full h-auto relative  flex flex-col gap-1.5">
           <label class="text-xs text-[#8B8E98] font-semibold">
             Mobile number:
           </label>
-          <MdOutlineEmail className="w-5 absolute z-20 left-3 bottom-2.5" />
+          <BsTelephone className="w-5 absolute z-20 left-3 bottom-2.5" />
 
           <input
             placeholder="0123456789"
