@@ -37,13 +37,7 @@ export default function HomePage() {
         </div>
         <img src={carHome} className="md:w-[800px]" alt="" />
       </div>
-      <Marquee
-        direction="right"
-        speed={100}
-        delay={5}
-        autoFill={true}
-        className="p-10"
-      >
+      <Marquee direction="right" speed={100} autoFill={true} className="p-10">
         <div className="mx-12">
           <img className="w-[100px] grayscale" src={kiaLogo} alt="" />
         </div>

@@ -44,9 +44,9 @@ export default function Navbar() {
           <button>
             <BsSearch size={20} />
           </button>
-          <button>
+          <Link to={"/signup"}>
             <BsPerson size={28} />
-          </button>
+          </Link>
           <div onClick={handleNav} className="block md:hidden cursor-pointer">
             {nav ? <RiCloseFill size={28} /> : <RiMenu3Fill size={24} />}
           </div>
