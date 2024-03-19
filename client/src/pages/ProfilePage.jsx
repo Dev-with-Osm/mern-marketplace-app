@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 export default function ProfilePage() {
-  return <div>ProfilePage</div>;
+  const { currentUser } = useSelector((state) => state.user);
+  return <div>{currentUser.email}</div>;
 }
