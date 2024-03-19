@@ -4,14 +4,21 @@ import { BsShieldLock } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signInFailure,
+  signInStart,
+  signInSuccess,
+} from "../redux/user/userSlice";
 
 export default function SignInPage() {
   const navigate = useNavigate();
-
+  const { loading, error } = useSelector((state) => state.user);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setFormData({
@@ -22,13 +29,15 @@ export default function SignInPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      dispatch(signInStart());
       const response = await axios.post("/auth/login", formData);
       if (response.status === 200) {
+        dispatch(signInSuccess(response.data));
         alert("Login Successful");
         navigate("/");
       }
     } catch (error) {
-      alert(error.response.data.message);
+      dispatch(signInFailure(error.response.data.message));
     }
   };
   return (
@@ -41,7 +50,7 @@ export default function SignInPage() {
           <p className="m-0 text-xl font-bold text-[#212121]">
             Login to your Account
           </p>
-          <span className="text-xs max-w-[80%] text-center leading-3 text-[#8B8E98]">
+          <span className="text-xs max-w-[80%] text-center leading-5 text-[#8B8E98]">
             Get started with our app, just create an account and enjoy the
             experience.
           </span>
@@ -56,7 +65,8 @@ export default function SignInPage() {
             type="email"
             id="email"
             onChange={handleChange}
-            className="w-auto h-10 pl-10 rounded-md outline-none border border-solid border-[#d0cfcf] filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
+            disabled={loading}
+            className="w-auto h-10 pl-10 disabled:cursor-not-allowed rounded-md outline-none border-2 border-solid border-gray-500 filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
           />
         </div>
         <div className="w-full h-auto relative flex flex-col gap-1.5">
@@ -69,16 +79,21 @@ export default function SignInPage() {
             placeholder="Password"
             type="password"
             id="password"
+            disabled={loading}
             onChange={handleChange}
-            className="w-auto h-10 pl-10 rounded-md outline-none border border-solid border-[#d0cfcf] filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
+            className="w-auto h-10 disabled:cursor-not-allowed pl-10 rounded-md outline-none border-2 border-solid border-gray-500 filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
           />
         </div>
         <button
+          disabled={loading}
           type="submit"
-          className="w-full h-10 border-none bg-[#115dfc] rounded-md outline-none text-white cursor-pointer"
+          className="w-full disabled:bg-gray-400 disabled:cursor-not-allowed h-10 border-none bg-[#115dfc] rounded-md outline-none text-white cursor-pointer"
         >
           <span>Sign In</span>
         </button>
+        <div className="w-full">
+          <h5 className="text-sm text-red-600 font-semibold">{error}</h5>
+        </div>
         <div className="w-full">
           <h1 className="text-[12px] font-semibold text-right">
             Don't have an account?{" "}

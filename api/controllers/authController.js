@@ -39,15 +39,13 @@ const loginUser = asyncHandler(async (req, res) => {
     const token = jwt.sign({ _id: user?._id }, process.env.JWT_SECRET_KEY, {
       expiresIn: "1d",
     });
+    const { password: pass, ...rest } = user._doc;
     res
       .cookie("access_token", token, {
         maxAge: 86400000, // 1 day in milliseconds
         httpOnly: true,
       })
-      .json({
-        _id: user._id,
-        email: user.email,
-      });
+      .json(rest);
   } catch (error) {
     throw new Error(error);
   }

@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUpPage() {
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
@@ -38,7 +39,7 @@ export default function SignUpPage() {
         navigate("/signin");
       }
     } catch (error) {
-      alert(error.response.data.message);
+      setError(error.response.data.message);
     }
   };
 
@@ -114,6 +115,9 @@ export default function SignUpPage() {
         >
           <span>Sign Up</span>
         </button>
+        <div className="w-full">
+          <h5 className="text-sm text-red-600 font-semibold">{error}</h5>
+        </div>
         <div className="w-full">
           <h1 className="text-[12px] font-semibold text-right">
             Already have an account?{" "}
