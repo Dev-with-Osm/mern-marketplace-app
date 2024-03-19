@@ -44,7 +44,7 @@ export default function Navbar() {
           <button>
             <BsSearch size={20} />
           </button>
-          <Link to={"/signup"}>
+          <Link to={"/signin"}>
             <BsPerson size={28} />
           </Link>
           <div onClick={handleNav} className="block md:hidden cursor-pointer">
