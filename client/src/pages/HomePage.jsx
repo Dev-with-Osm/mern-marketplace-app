@@ -39,7 +39,7 @@ export default function HomePage() {
       </div>
       <Marquee
         direction="right"
-        speed={70}
+        speed={100}
         delay={5}
         autoFill={true}
         className="p-10"

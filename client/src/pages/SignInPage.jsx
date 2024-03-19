@@ -2,6 +2,7 @@ import React from "react";
 import { MdOutlineEmail } from "react-icons/md";
 import { BsShieldLock } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 export default function SignInPage() {
   return (
@@ -17,9 +18,9 @@ export default function SignInPage() {
           </span>
         </div>
         <br />
-        <div className="w-full h-auto relative flex flex-col gap-1.5">
+        <div className="w-full h-auto relative  flex flex-col gap-1.5">
           <label class="text-xs text-[#8B8E98] font-semibold">Email</label>
-          <MdOutlineEmail className="w-5 absolute z-[99] left-3 bottom-2.5" />
+          <MdOutlineEmail className="w-5 absolute z-20 left-3 bottom-2.5" />
 
           <input
             placeholder="name@mail.com"
@@ -31,7 +32,7 @@ export default function SignInPage() {
           <label className="text-xs text-[#8B8E98] font-semibold">
             Password
           </label>
-          <BsShieldLock className="w-5 absolute z-[99] left-3 bottom-2.5" />
+          <BsShieldLock className="w-5 absolute z-20 left-3 bottom-2.5" />
 
           <input
             placeholder="Password"
@@ -45,6 +46,14 @@ export default function SignInPage() {
         >
           <span>Sign In</span>
         </button>
+        <div className="w-full">
+          <h1 className="text-[12px] font-semibold text-right">
+            Don't have an account?{" "}
+            <Link className="text-blue-500" to={"/"}>
+              Sign Up
+            </Link>{" "}
+          </h1>
+        </div>
 
         <div className="w-full flex items-center justify-center gap-8 text-[#8b8e98] ">
           <hr className="block w-full h-[1px] border-0 bg-[#e8e8e8] " />

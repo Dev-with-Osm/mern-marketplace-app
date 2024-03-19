@@ -23,9 +23,9 @@ export default function Navbar() {
     <div className="shadow-md">
       <div className=" flex justify-between items-center py-4 md:py-0 max-w-[1240px] mx-auto px-4 text-black">
         {/* Logo */}
-        <h1 className="w-full text-2xl font-bold text-gray-700 ">
+        <Link to={"/"} className="w-full text-2xl font-bold text-gray-700 ">
           MarketPlace
-        </h1>
+        </Link>
 
         {/* Desktop Navigation */}
         <ul className="hidden md:flex">
@@ -34,7 +34,7 @@ export default function Navbar() {
               key={item.id}
               className="p-4 text-lg rounded-xl my-2 cursor-pointer duration-300 hover:text-black"
             >
-              {item.text}
+              <Link to={item.lihk}>{item.text}</Link>
             </li>
           ))}
         </ul>
@@ -56,8 +56,8 @@ export default function Navbar() {
         <ul
           className={
             nav
-              ? "fixed md:hidden left-0 top-0 w-[60%] h-full border-r shadow-md text-black bg-[#FCFCFF] ease-in-out duration-500"
-              : "ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%]"
+              ? "fixed md:hidden left-0 top-0 z-50 w-[60%] h-full border-r shadow-md text-black bg-[#FCFCFF] ease-in-out duration-500"
+              : "ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%] "
           }
         >
           {/* Mobile Logo */}
