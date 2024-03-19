@@ -13,7 +13,7 @@ export default function Navbar() {
   };
   const navItems = [
     { id: 1, text: "Home", lihk: "/" },
-    { id: 2, text: "Company", lihk: "/" },
+    { id: 2, text: "Company", lihk: "/signin" },
     { id: 3, text: "Resources", lihk: "/" },
     { id: 4, text: "About", lihk: "/" },
     { id: 5, text: "Contact", lihk: "/" },
@@ -61,7 +61,7 @@ export default function Navbar() {
           }
         >
           {/* Mobile Logo */}
-          <h1 className="w-full text-2xl font-bold  text-gray-700 m-4  ">
+          <h1 className="w-full text-2xl font-bold  text-gray-700 m-4  mb-20 ">
             MarketPlace
           </h1>
 
@@ -69,7 +69,7 @@ export default function Navbar() {
           {navItems.map((item) => (
             <li
               key={item.id}
-              className="flex items-center justify-center p-4 text-lg duration-300 font-semibold cursor-pointer"
+              className="flex items-center justify-center p-4  text-lg duration-300 font-semibold cursor-pointer"
             >
               <Link to={item.lihk}>{item.text}</Link>
             </li>
