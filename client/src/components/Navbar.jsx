@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { RiMenu3Fill, RiCloseFill } from "react-icons/ri";
 import { BsPerson, BsSearch } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   // State to manage the navbar's visibility
   const [nav, setNav] = useState(false);
+  const { currentUser } = useSelector((state) => state.user);
 
   // Toggle function to handle the navbar's display
   const handleNav = () => {
@@ -14,7 +16,7 @@ export default function Navbar() {
   const navItems = [
     { id: 1, text: "Home", lihk: "/" },
     { id: 2, text: "Company", lihk: "/signin" },
-    { id: 3, text: "Resources", lihk: "/" },
+    { id: 3, text: "Resources", lihk: "/profile" },
     { id: 4, text: "About", lihk: "/" },
     { id: 5, text: "Contact", lihk: "/" },
   ];
@@ -44,9 +46,19 @@ export default function Navbar() {
           <button>
             <BsSearch size={20} />
           </button>
-          <Link to={"/signin"}>
-            <BsPerson size={28} />
+
+          <Link to={"/profile"}>
+            {currentUser ? (
+              <img
+                src={currentUser.avatar}
+                className="rounded-full w-20 object-cover"
+                alt="user avatar"
+              />
+            ) : (
+              <BsPerson size={28} />
+            )}
           </Link>
+
           <div onClick={handleNav} className="block md:hidden cursor-pointer">
             {nav ? <RiCloseFill size={28} /> : <RiMenu3Fill size={24} />}
           </div>
