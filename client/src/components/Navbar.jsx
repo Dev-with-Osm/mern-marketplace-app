@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { RiMenu3Fill, RiCloseFill } from "react-icons/ri";
 import { BsPerson, BsSearch } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import OutsideClickHandler from "react-outside-click-handler";
 
 export default function Navbar() {
   // State to manage the navbar's visibility
@@ -13,6 +14,7 @@ export default function Navbar() {
   const handleNav = () => {
     setNav(!nav);
   };
+
   const navItems = [
     { id: 1, text: "Home", lihk: "/" },
     { id: 2, text: "Company", lihk: "/signin" },
@@ -34,7 +36,7 @@ export default function Navbar() {
           {navItems.map((item) => (
             <li
               key={item.id}
-              className="p-4 text-lg rounded-xl my-2 cursor-pointer duration-300 hover:text-black"
+              className="p-4  rounded-xl my-2 cursor-pointer duration-300 hover:text-black"
             >
               <Link to={item.lihk}>{item.text}</Link>
             </li>
@@ -65,28 +67,30 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Navigation Menu */}
-        <ul
-          className={
-            nav
-              ? "fixed md:hidden left-0 top-0 z-50 w-[60%] h-full border-r shadow-md text-black bg-[#FCFCFF] ease-in-out duration-500"
-              : "ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%] "
-          }
-        >
-          {/* Mobile Logo */}
-          <h1 className="w-full text-2xl font-bold  text-gray-700 m-4  mb-20 ">
-            MarketPlace
-          </h1>
+        <OutsideClickHandler onOutsideClick={() => setNav(false)}>
+          <ul
+            className={
+              nav
+                ? "fixed md:hidden left-0 top-0 z-50 w-[60%] h-full border-r shadow-md text-black bg-[#FCFCFF] ease-in-out duration-500"
+                : "ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%] "
+            }
+          >
+            {/* Mobile Logo */}
+            <h1 className="w-full text-2xl font-bold  text-gray-700 m-4  mb-20 ">
+              MarketPlace
+            </h1>
 
-          {/* Mobile Navigation Items */}
-          {navItems.map((item) => (
-            <li
-              key={item.id}
-              className="flex items-center justify-center p-4  text-lg duration-300 font-semibold cursor-pointer"
-            >
-              <Link to={item.lihk}>{item.text}</Link>
-            </li>
-          ))}
-        </ul>
+            {/* Mobile Navigation Items */}
+            {navItems.map((item) => (
+              <li
+                key={item.id}
+                className="flex items-center justify-center p-4  text-lg duration-300 font-semibold cursor-pointer"
+              >
+                <Link to={item.lihk}>{item.text}</Link>
+              </li>
+            ))}
+          </ul>
+        </OutsideClickHandler>
       </div>
     </div>
   );
