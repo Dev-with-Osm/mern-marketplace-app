@@ -10,6 +10,7 @@ import {
   signInStart,
   signInSuccess,
 } from "../redux/user/userSlice";
+import OAuth from "../components/OAuth";
 
 export default function SignInPage() {
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ export default function SignInPage() {
             id="email"
             onChange={handleChange}
             disabled={loading}
-            className="w-auto h-10 pl-10 disabled:cursor-not-allowed rounded-md outline-none border-2 border-solid border-gray-500 filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
+            className="w-auto h-10 pl-10 disabled:cursor-not-allowed rounded-md outline-none border-2 border-solid border-slate-300 filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
           />
         </div>
         <div className="w-full h-auto relative flex flex-col gap-1.5">
@@ -81,7 +82,7 @@ export default function SignInPage() {
             id="password"
             disabled={loading}
             onChange={handleChange}
-            className="w-auto h-10 disabled:cursor-not-allowed pl-10 rounded-md outline-none border-2 border-solid border-gray-500 filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
+            className="w-auto h-10 disabled:cursor-not-allowed pl-10 rounded-md outline-none border-2 border-solid border-slate-300 filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
           />
         </div>
         <button
@@ -108,14 +109,7 @@ export default function SignInPage() {
           <span>Or</span>
           <hr className="block w-full h-[1px] border-0 bg-[#e8e8e8] " />
         </div>
-        <button
-          type="submit"
-          className="w-full h-10 flex items-center justify-center gap-2.5 bg-white rounded-md outline-none text-[#242424] border border-solid border-[#e5e5e5] filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out cursor-pointer "
-        >
-          <FcGoogle />
-
-          <span>Sign In with Google</span>
-        </button>
+        <OAuth />
         <p className="text-xs text-[#8b8e98] underline">
           Terms of use &amp; Conditions
         </p>

@@ -51,6 +51,62 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+//log in with google
+const google = asyncHandler(async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    if (user) {
+      const token = jwt.sign({ _id: user?._id }, process.env.JWT_SECRET_KEY, {
+        expiresIn: "1d",
+      });
+      const { password: pass, ...rest } = user._doc;
+      res
+        .cookie("access_token", token, {
+          maxAge: 86400000, // 1 day in milliseconds
+          httpOnly: true,
+        })
+        .json(rest);
+    } else {
+      const generateMobileNumber = Math.random().toString().slice(2);
+
+      // Extract the last 10 digits
+      const last10Digits = generateMobileNumber.slice(-10);
+
+      console.log(last10Digits);
+      const generatedPassword =
+        Math.random().toString(36).slice(-8) +
+        Math.random().toString(36).slice(-8);
+      const hashedPassword = bcrypt.hashSync(generatedPassword, 10);
+      const newUser = new User({
+        fullName:
+          req.body.fullName.split(" ").join("").toLowerCase() +
+          Math.random().toString(36).slice(-4),
+        email: req.body.email,
+        avatar: req.body.avatar,
+        password: hashedPassword,
+        mobile: last10Digits,
+      });
+      await newUser.save();
+      const token = jwt.sign(
+        { _id: newUser?._id },
+        process.env.JWT_SECRET_KEY,
+        {
+          expiresIn: "1d",
+        }
+      );
+      const { password: pass, ...rest } = newUser._doc;
+      res
+        .cookie("access_token", token, {
+          maxAge: 86400000, // 1 day in milliseconds
+          httpOnly: true,
+        })
+        .json(rest);
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
 //logout user
 const logOutUser = asyncHandler(async (req, res) => {
   try {
@@ -60,4 +116,4 @@ const logOutUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { createNewUser, loginUser, logOutUser };
+module.exports = { createNewUser, loginUser, logOutUser, google };
