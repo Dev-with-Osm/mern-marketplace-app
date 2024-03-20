@@ -45,7 +45,7 @@ export default function SignInPage() {
     <div className="p-4 flex  justify-center md:mt-10">
       <form
         onSubmit={handleSubmit}
-        className="object-contain md:max-w-xl flex flex-col items-center justify-center gap-4 pt-10 pb-5 px-10 bg-gray-50 shadow-xl rounded-xl"
+        className="object-contain md:max-w-xl flex flex-col items-center justify-center gap-4 pt-10 pb-5 px-10 bg-gray-50 shadow-xl rounded-xl border-2 border-slate-200"
       >
         <div className="flex flex-col items-center justify-center gap-3">
           <p className="m-0 text-xl font-bold text-[#212121]">
@@ -67,7 +67,7 @@ export default function SignInPage() {
             id="email"
             onChange={handleChange}
             disabled={loading}
-            className="w-auto h-10 pl-10 disabled:cursor-not-allowed rounded-md outline-none border-2 border-solid border-slate-300 filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
+            className="w-auto h-10 pl-10 disabled:cursor-not-allowed rounded-md outline-none border border-solid border-slate-400 filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
           />
         </div>
         <div className="w-full h-auto relative flex flex-col gap-1.5">
@@ -82,7 +82,7 @@ export default function SignInPage() {
             id="password"
             disabled={loading}
             onChange={handleChange}
-            className="w-auto h-10 disabled:cursor-not-allowed pl-10 rounded-md outline-none border-2 border-solid border-slate-300 filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
+            className="w-auto h-10 disabled:cursor-not-allowed pl-10 rounded-md outline-none border border-solid border-slate-400 filter drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5)) transition-all duration-300 ease-in-out focus:border-transparent focus:shadow-outline focus:bg-transparent  border-transparent focus:ring-2 focus:ring-gray-800"
           />
         </div>
         <button

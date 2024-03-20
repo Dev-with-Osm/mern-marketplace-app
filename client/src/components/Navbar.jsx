@@ -51,7 +51,7 @@ export default function Navbar() {
             {currentUser ? (
               <img
                 src={currentUser.avatar}
-                className="rounded-full w-20 object-cover"
+                className="rounded-full w-24 object-cover sm:w-12 md:w-20"
                 alt="user avatar"
               />
             ) : (

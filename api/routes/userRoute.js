@@ -4,7 +4,7 @@ const { updateUser, deleteUser } = require("../controllers/userController.js");
 
 const router = express.Router();
 
-router.put("/", authMiddleware, updateUser);
+router.put("/update/:id", authMiddleware, updateUser);
 router.delete("/", authMiddleware, deleteUser);
 
 module.exports = router;
