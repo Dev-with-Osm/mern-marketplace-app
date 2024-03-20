@@ -5,6 +5,12 @@ import { MdDriveFileRenameOutline, MdOutlineEmail } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+  signOutUserFailure,
+  signOutUserStart,
+  signOutUserSuccess,
   updateUserFailure,
   updateUserStart,
   updateUserSuccess,
@@ -73,12 +79,35 @@ export default function ProfilePage() {
       );
       if (response.status === 200) {
         dispatch(updateUserSuccess(response.data));
-        console.log(response.data);
         setUpdatedSuccess("Profile has been updated successfully!");
       }
     } catch (error) {
       dispatch(updateUserFailure(error.response.data.message));
-      console.log(error);
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    try {
+      dispatch(deleteUserStart());
+      const response = await axios.delete(`/user/delete/${currentUser._id}`);
+      if (response.status === 200) {
+        dispatch(deleteUserSuccess(response.data));
+        alert("User has been deleted successfully!");
+      }
+    } catch (error) {
+      dispatch(deleteUserFailure(error.response.data.message));
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      dispatch(signOutUserStart());
+      const response = await axios.get("/auth/logout");
+      if (response.status === 200) {
+        dispatch(signOutUserSuccess(response.data));
+      }
+    } catch (error) {
+      dispatch(signOutUserFailure(error.response.data.message));
     }
   };
   return (
@@ -204,12 +233,12 @@ export default function ProfilePage() {
           </h5>
         </div>
         <div className="w-full flex items-center justify-between text-red-500 font-semibold -mt-4">
-          <Link className="" to={"/signin"}>
+          <button className="" type="button" onClick={handleDeleteAccount}>
             Delete
-          </Link>
-          <Link className="" to={"/signin"}>
+          </button>
+          <button className="" type="button" onClick={handleLogout}>
             Logout
-          </Link>
+          </button>
         </div>
       </form>
     </div>

@@ -31,31 +31,15 @@ const updateUser = asyncHandler(async (req, res) => {
   } catch (error) {
     throw new Error(error);
   }
-
-  // ! updated code
-  // // const { _id } = req.user;
-  // const { id } = req.params;
-  // const { password } = req.body;
-  // // verifyMongoDbId(_id);
-  // try {
-  //   const hashedPass = bcrypt.hashSync(password, 10);
-  //   const newUser = await User.findByIdAndUpdate(
-  //     id,
-  //     { ...req.body, password: hashedPass },
-  //     { new: true }
-  //   );
-  //   res.json(newUser);
-  // } catch (error) {
-  //   throw new Error(error);
-  // }
 });
 
 //delete user
 const deleteUser = asyncHandler(async (req, res) => {
-  const { _id } = req.user;
-  verifyMongoDbId(_id);
+  if (req.user._id != req.params.id) {
+    throw new Error("You can only delete your own account");
+  }
   try {
-    const deletedUser = await User.findByIdAndDelete(_id);
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
     res.json(deletedUser);
   } catch (error) {
     throw new Error(error);
