@@ -3,6 +3,7 @@ const { notFound, errorHandler } = require("./middlewares/errorHandler");
 const dotenv = require("dotenv").config();
 const authRouter = require("./routes/authRoute.js");
 const userRouter = require("./routes/userRoute.js");
+const carListingRouter = require("./routes/carListingRoute.js");
 const dbConnect = require("./config/dbConnect.js");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
@@ -22,6 +23,7 @@ app.use(
 
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
+app.use("/api/listing", carListingRouter);
 
 app.use(notFound);
 app.use(errorHandler);
