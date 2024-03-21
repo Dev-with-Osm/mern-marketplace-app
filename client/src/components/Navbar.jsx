@@ -18,7 +18,7 @@ export default function Navbar() {
   const navItems = [
     { id: 1, text: "Home", lihk: "/" },
     { id: 2, text: "Company", lihk: "/signin" },
-    { id: 3, text: "Resources", lihk: "/profile" },
+    { id: 3, text: "Listings", lihk: "/profile" },
     { id: 4, text: "About", lihk: "/" },
     { id: 5, text: "Contact", lihk: "/" },
   ];
@@ -32,7 +32,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex">
+        <ul className="hidden md:flex items-center">
           {navItems.map((item) => (
             <li
               key={item.id}
@@ -41,10 +41,16 @@ export default function Navbar() {
               <Link to={item.lihk}>{item.text}</Link>
             </li>
           ))}
+          <Link
+            className="flex items-center justify-center underline  underline-offset-2 rounded-sm  w-28 mr-3"
+            to={"/signin"}
+          >
+            Create Listing
+          </Link>
         </ul>
 
         {/* Mobile Navigation Icon */}
-        <div className="flex items-center md:ml-10 gap-4  border-gray-400 rounded-full p-1 text-gray-700">
+        <div className="flex items-center  gap-4  border-gray-400 rounded-full p-1 text-gray-700">
           <button>
             <BsSearch size={20} />
           </button>
@@ -53,7 +59,7 @@ export default function Navbar() {
             {currentUser ? (
               <img
                 src={currentUser.avatar}
-                className="rounded-full w-24 object-cover sm:w-12 md:w-20"
+                className="rounded-full w-24 object-cover sm:w-12 md:w-24"
                 alt="user avatar"
               />
             ) : (
@@ -79,7 +85,6 @@ export default function Navbar() {
             <h1 className="w-full text-2xl font-bold  text-gray-700 m-4  mb-20 ">
               MarketPlace
             </h1>
-
             {/* Mobile Navigation Items */}
             {navItems.map((item) => (
               <li
@@ -89,6 +94,12 @@ export default function Navbar() {
                 <Link to={item.lihk}>{item.text}</Link>
               </li>
             ))}
+            <div className="w-full flex justify-center items-center ">
+              <Link className=" underline underline-offset-2 " to={"/signin"}>
+                {" "}
+                Create Listing
+              </Link>
+            </div>
           </ul>
         </OutsideClickHandler>
       </div>
