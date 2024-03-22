@@ -25,6 +25,9 @@ var carSchema = new mongoose.Schema(
     location: {
       type: String,
     },
+    type: {
+      type: String,
+    },
     features: {
       type: String,
     },
@@ -43,7 +46,7 @@ var carSchema = new mongoose.Schema(
     mileage: {
       type: Number,
     },
-    year: {
+    carAge: {
       type: Number,
       required: true,
     },
@@ -59,6 +62,10 @@ var carSchema = new mongoose.Schema(
     },
     engineType: {
       type: String,
+      required: true,
+    },
+    offer: {
+      type: Boolean,
       required: true,
     },
     performanceMetrics: {

@@ -41,12 +41,6 @@ export default function Navbar() {
               <Link to={item.lihk}>{item.text}</Link>
             </li>
           ))}
-          <Link
-            className="flex items-center justify-center underline  underline-offset-2 rounded-sm  w-28 mr-3"
-            to={"/signin"}
-          >
-            Create Listing
-          </Link>
         </ul>
 
         {/* Mobile Navigation Icon */}
@@ -55,7 +49,7 @@ export default function Navbar() {
             <BsSearch size={20} />
           </button>
 
-          <Link to={"/profile"}>
+          <Link to={"/account"}>
             {currentUser ? (
               <img
                 src={currentUser.avatar}
@@ -94,12 +88,7 @@ export default function Navbar() {
                 <Link to={item.lihk}>{item.text}</Link>
               </li>
             ))}
-            <div className="w-full flex justify-center items-center ">
-              <Link className=" underline underline-offset-2 " to={"/signin"}>
-                {" "}
-                Create Listing
-              </Link>
-            </div>
+            <div className="w-full flex justify-center items-center "></div>
           </ul>
         </OutsideClickHandler>
       </div>
