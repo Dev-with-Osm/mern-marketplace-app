@@ -1,6 +1,6 @@
 // AccountNav.jsx
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 export default function AccountNav() {
   const { pathname } = useLocation();
@@ -27,19 +27,16 @@ export default function AccountNav() {
   return (
     <div>
       <nav className="w-full flex gap-6 mt-8 justify-center">
-        <Link className={linkClasses("profile")} to="/account">
+        <NavLink className={linkClasses("profile")} exact to="/account">
           My Profile
-        </Link>
+        </NavLink>
         <Link
           className={linkClasses("create-car-listing")}
           to="/account/create-car-listing"
         >
           Create Listing
         </Link>
-        <Link
-          className={linkClasses("show-listing")}
-          to="/account/show-listing"
-        >
+        <Link className={linkClasses("showlisting")} to="/account/showlisting">
           Create Listing
         </Link>
       </nav>

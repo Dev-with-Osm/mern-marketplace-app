@@ -46,4 +46,15 @@ const deleteUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { updateUser, deleteUser };
+// get single user by id
+const getUserById = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  try {
+    const findUser = await User.findById(id);
+    res.json(findUser);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+module.exports = { updateUser, deleteUser, getUserById };
