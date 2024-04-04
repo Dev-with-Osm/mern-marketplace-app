@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 import SwiperCore from "swiper";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Table from "../components/Table";
 
 export default function CarListing() {
@@ -19,7 +19,7 @@ export default function CarListing() {
 
   console.log(ownerInfo);
 
-  SwiperCore.use([Navigation]);
+  SwiperCore.use([Navigation, Autoplay, Pagination]); // Add necessary modules here
 
   useEffect(() => {
     const fetchListingCar = async () => {
@@ -52,7 +52,15 @@ export default function CarListing() {
         <div className="md:max-w-6xl mx-auto mt-8 md:my-14 ">
           <div className="flex flex-col md:flex-row  mx-auto  items-center md:justify-between ">
             <div className="flex flex-1 justify-center w-full md:w-3/5 px-4 md:justify-normal ">
-              <Swiper navigation>
+              <Swiper
+                autoplay={{
+                  delay: 3500,
+                  disableOnInteraction: false,
+                }}
+                pagination={{
+                  clickable: true,
+                }}
+              >
                 {listing.images.map((url) => (
                   <SwiperSlide key={url}>
                     <div

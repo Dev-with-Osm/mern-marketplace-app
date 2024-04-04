@@ -54,9 +54,10 @@ export default function CreateCarListing() {
         ...formData,
         userRef: currentUser._id,
       });
+      // console.log(res);
       if (res.status === 200) {
         setLoading(false);
-        navigate("/");
+        navigate(`/listing/${res.data._id}`);
       }
     } catch (error) {
       setLoading(false);

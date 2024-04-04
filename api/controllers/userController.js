@@ -1,4 +1,5 @@
 const User = require("../models/userModel.js");
+const Listing = require("../models/carListingModel.js");
 const asyncHandler = require("express-async-handler");
 const verifyMongoDbId = require("../utils/verifyMongoDbId.js");
 const bcrypt = require("bcrypt");
@@ -35,12 +36,26 @@ const updateUser = asyncHandler(async (req, res) => {
 
 //delete user
 const deleteUser = asyncHandler(async (req, res) => {
-  if (req.user._id != req.params.id) {
+  if (req.user._id !== req.params.id) {
     throw new Error("You can only delete your own account");
   }
   try {
     const deletedUser = await User.findByIdAndDelete(req.params.id);
     res.json(deletedUser);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+//get user listings
+const getUserListings = asyncHandler(async (req, res) => {
+  console.log(req.user);
+  if (req.user._id != req.params.id) {
+    throw new Error("Something Wrong!");
+  }
+  try {
+    const listings = await Listing.find({ userRef: req.params.id });
+    res.json(listings);
   } catch (error) {
     throw new Error(error);
   }
@@ -57,4 +72,4 @@ const getUserById = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { updateUser, deleteUser, getUserById };
+module.exports = { updateUser, deleteUser, getUserById, getUserListings };

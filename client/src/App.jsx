@@ -11,6 +11,7 @@ import CreateCarListing from "./pages/CreateCarListing";
 import AccountPage from "./pages/AccountPage";
 import UserListing from "./pages/UserListing";
 import CarListing from "./pages/CarListing";
+import NoPage from "./pages/NoPage";
 
 axios.defaults.baseURL = "http://localhost:4000/api";
 axios.defaults.withCredentials = true;
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/listing/:listingId" element={<CarListing />} />
+          <Route path="*" element={<NoPage />} />
           <Route element={<PrivateRoute />}>
             <Route path="/account" element={<AccountPage />}>
               <Route path="/account/profile" element={<ProfilePage />} />
